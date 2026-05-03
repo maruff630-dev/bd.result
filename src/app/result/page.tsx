@@ -115,10 +115,10 @@ function ResultContent() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50">
+      <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-slate-600 font-medium">Fetching Result...</p>
+          <p className="text-slate-600 dark:text-slate-400 font-medium">Fetching Result...</p>
         </div>
       </div>
     );
@@ -126,12 +126,12 @@ function ResultContent() {
 
   if (error) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 p-4">
-        <div className="bg-red-50 border border-red-100 p-8 rounded-2xl max-w-md text-center shadow-lg shadow-red-500/5">
-          <p className="text-red-600 text-lg font-medium mb-6">{error}</p>
+      <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-950 p-4">
+        <div className="bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-800/50 p-8 rounded-2xl max-w-md text-center shadow-lg shadow-red-500/5">
+          <p className="text-red-600 dark:text-red-400 text-lg font-medium mb-6">{error}</p>
           <button 
             onClick={() => router.push('/')}
-            className="text-white bg-slate-900 hover:bg-slate-800 px-6 py-2.5 rounded-xl transition-all shadow-md"
+            className="text-white bg-slate-900 dark:bg-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-200 px-6 py-2.5 rounded-xl transition-all shadow-md font-medium"
           >
             Go Back
           </button>
@@ -141,7 +141,7 @@ function ResultContent() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -150,7 +150,7 @@ function ResultContent() {
         <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-4 mb-6">
           <button 
             onClick={() => router.push('/')}
-            className="flex items-center justify-center gap-2 text-slate-600 hover:text-slate-900 bg-white border border-slate-200 hover:bg-slate-50 py-2.5 px-6 rounded-xl transition-all font-medium shadow-sm"
+            className="flex items-center justify-center gap-2 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 py-2.5 px-6 rounded-xl transition-all font-medium shadow-sm"
           >
             <ArrowLeft size={18} /> Search Again
           </button>
@@ -173,7 +173,7 @@ function ResultContent() {
         {/* This div is what gets converted to PDF */}
         <div 
           ref={pdfRef} 
-          className={`bg-white overflow-hidden ${isDownloading ? '' : 'rounded-3xl shadow-xl border border-slate-100'}`}
+          className={`bg-white dark:bg-slate-900 overflow-hidden ${isDownloading ? '' : 'rounded-3xl shadow-xl border border-slate-100 dark:border-slate-800'}`}
         >
           {/* Header */}
           <div className="bg-gradient-to-r from-blue-600 to-emerald-500 p-6 sm:p-8 text-white relative overflow-hidden">
@@ -204,55 +204,55 @@ function ResultContent() {
           {/* Body */}
           <div className="p-4 sm:p-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 mb-8 sm:mb-10">
-              <div className="bg-slate-50 p-5 sm:p-6 rounded-2xl border border-slate-100">
-                <h3 className="text-xs sm:text-sm font-bold text-slate-400 uppercase tracking-wider mb-4">Student Details</h3>
+              <div className="bg-slate-50 dark:bg-slate-800/50 p-5 sm:p-6 rounded-2xl border border-slate-100 dark:border-slate-700/50">
+                <h3 className="text-xs sm:text-sm font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-4">Student Details</h3>
                 <div className="space-y-4">
-                  <div className="flex flex-col sm:flex-row sm:justify-between border-b border-slate-200 pb-3 gap-1">
-                    <span className="text-slate-500 text-sm sm:text-base">Father's Name</span>
-                    <span className="font-semibold text-slate-800 text-sm sm:text-base break-words">{resultData.fatherName}</span>
+                  <div className="flex flex-col sm:flex-row sm:justify-between border-b border-slate-200 dark:border-slate-700 pb-3 gap-1">
+                    <span className="text-slate-500 dark:text-slate-400 text-sm sm:text-base">Father's Name</span>
+                    <span className="font-semibold text-slate-800 dark:text-slate-200 text-sm sm:text-base break-words">{resultData.fatherName}</span>
                   </div>
-                  <div className="flex flex-col sm:flex-row sm:justify-between border-b border-slate-200 pb-3 gap-1">
-                    <span className="text-slate-500 text-sm sm:text-base">Mother's Name</span>
-                    <span className="font-semibold text-slate-800 text-sm sm:text-base break-words">{resultData.motherName}</span>
+                  <div className="flex flex-col sm:flex-row sm:justify-between border-b border-slate-200 dark:border-slate-700 pb-3 gap-1">
+                    <span className="text-slate-500 dark:text-slate-400 text-sm sm:text-base">Mother's Name</span>
+                    <span className="font-semibold text-slate-800 dark:text-slate-200 text-sm sm:text-base break-words">{resultData.motherName}</span>
                   </div>
                   <div className="flex flex-col sm:flex-row sm:justify-between pb-1 gap-1">
-                    <span className="text-slate-500 text-sm sm:text-base">Registration</span>
-                    <span className="font-semibold text-slate-800 text-sm sm:text-base break-words">{resultData.reg}</span>
+                    <span className="text-slate-500 dark:text-slate-400 text-sm sm:text-base">Registration</span>
+                    <span className="font-semibold text-slate-800 dark:text-slate-200 text-sm sm:text-base break-words">{resultData.reg}</span>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-emerald-50 p-6 rounded-2xl border border-emerald-100 flex flex-col justify-center items-center text-center">
-                <span className="text-emerald-600 font-bold uppercase tracking-wider text-sm mb-2">Final GPA</span>
-                <span className="text-4xl font-black text-emerald-500">{resultData.gpa}</span>
-                <span className="mt-3 text-emerald-700 font-medium bg-emerald-100 px-4 py-1.5 rounded-full text-sm">
+              <div className="bg-emerald-50 dark:bg-emerald-900/20 p-6 rounded-2xl border border-emerald-100 dark:border-emerald-800/30 flex flex-col justify-center items-center text-center">
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold uppercase tracking-wider text-sm mb-2">Final GPA</span>
+                <span className="text-4xl font-black text-emerald-500 dark:text-emerald-400">{resultData.gpa}</span>
+                <span className="mt-3 text-emerald-700 dark:text-emerald-300 font-medium bg-emerald-100 dark:bg-emerald-900/50 px-4 py-1.5 rounded-full text-sm border border-emerald-200/50 dark:border-emerald-800/50">
                   Group: {resultData.group}
                 </span>
               </div>
             </div>
 
             <div>
-              <h3 className="text-base sm:text-lg font-bold text-slate-800 mb-4 flex items-center gap-2 px-1 sm:px-0">
+              <h3 className="text-base sm:text-lg font-bold text-slate-800 dark:text-slate-200 mb-4 flex items-center gap-2 px-1 sm:px-0">
                 Subject-wise Grades
               </h3>
-              <div className={`${isDownloading ? 'overflow-hidden' : 'overflow-x-auto'} border border-slate-200 rounded-xl shadow-sm`}>
+              <div className={`${isDownloading ? 'overflow-hidden' : 'overflow-x-auto'} border border-slate-200 dark:border-slate-700/50 rounded-xl shadow-sm`}>
                 <table className="w-full text-left border-collapse min-w-[300px]">
                   <thead>
-                    <tr className="bg-slate-50 text-slate-500 text-xs sm:text-sm uppercase tracking-wider">
-                      <th className="p-3 sm:p-4 font-semibold border-b border-slate-200">Subject</th>
-                      <th className="p-3 sm:p-4 font-semibold border-b border-slate-200 text-right">Grade</th>
+                    <tr className="bg-slate-50 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 text-xs sm:text-sm uppercase tracking-wider">
+                      <th className="p-3 sm:p-4 font-semibold border-b border-slate-200 dark:border-slate-700/50">Subject</th>
+                      <th className="p-3 sm:p-4 font-semibold border-b border-slate-200 dark:border-slate-700/50 text-right">Grade</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-100">
+                  <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
                     {resultData.subjects.map((sub: any, idx: number) => (
-                      <tr key={idx} className="hover:bg-slate-50/50 transition-colors">
-                        <td className="p-3 sm:p-4 text-slate-800 font-medium text-xs sm:text-base leading-snug">{sub.name}</td>
+                      <tr key={idx} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+                        <td className="p-3 sm:p-4 text-slate-800 dark:text-slate-300 font-medium text-xs sm:text-base leading-snug">{sub.name}</td>
                         <td className="p-3 sm:p-4 text-right">
-                          <span className={`px-2.5 py-1 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm font-bold inline-block ${
-                            sub.grade.includes('A') ? 'bg-emerald-100 text-emerald-700' :
-                            sub.grade.includes('B') ? 'bg-blue-100 text-blue-700' :
-                            sub.grade.includes('C') ? 'bg-yellow-100 text-yellow-700' :
-                            'bg-slate-100 text-slate-700'
+                          <span className={`px-2.5 py-1 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm font-bold inline-block border ${
+                            sub.grade.includes('A') ? 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800/50' :
+                            sub.grade.includes('B') ? 'bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-400 border-blue-200 dark:border-blue-800/50' :
+                            sub.grade.includes('C') ? 'bg-yellow-100 dark:bg-yellow-900/40 text-yellow-700 dark:text-yellow-400 border-yellow-200 dark:border-yellow-800/50' :
+                            'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-400 border-slate-200 dark:border-slate-700'
                           }`}>
                             {sub.grade}
                           </span>
@@ -274,7 +274,7 @@ function ResultContent() {
 export default function ResultPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen flex items-center justify-center bg-slate-50">
+      <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950">
         <div className="w-16 h-16 border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin" />
       </div>
     }>

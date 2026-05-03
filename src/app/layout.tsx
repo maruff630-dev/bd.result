@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import VisitTracker from "@/components/VisitTracker";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -77,14 +79,17 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-slate-50 relative pb-10">
-        <VisitTracker />
-        <main className="flex-1">
-          {children}
-        </main>
-        <footer className="absolute bottom-0 w-full text-center py-3 text-slate-400 text-xs font-medium">
-          BD Result Platform &copy; {new Date().getFullYear()} • v1.1.1
-        </footer>
+      <body className="min-h-full flex flex-col bg-slate-50 dark:bg-slate-950 transition-colors duration-300 relative pb-10">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <VisitTracker />
+          <ThemeToggle />
+          <main className="flex-1">
+            {children}
+          </main>
+          <footer className="absolute bottom-0 w-full text-center py-3 text-slate-400 dark:text-slate-500 text-xs font-medium">
+            BD Result Platform &copy; {new Date().getFullYear()} • v1.1.1
+          </footer>
+        </ThemeProvider>
       </body>
     </html>
   );
