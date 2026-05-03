@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, BookOpen, Calendar, GraduationCap, MapPin, ChevronDown, CheckCircle2, Award } from 'lucide-react';
+import AdBanner from '@/components/AdBanner';
 
 // Custom Select Component for Premium UI
 function CustomSelect({ name, label, icon: Icon, options, value, onChange, placeholder }: any) {
@@ -112,7 +113,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-[calc(100vh-48px)] flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8 overflow-hidden relative selection:bg-blue-200 selection:text-blue-900 dark:selection:bg-blue-900 dark:selection:text-blue-100">
+    <div className="flex-1 w-full flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8 overflow-hidden relative selection:bg-blue-200 selection:text-blue-900 dark:selection:bg-blue-900 dark:selection:text-blue-100">
       
       {/* Dynamic Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-slate-50 to-emerald-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 z-0"></div>
@@ -254,6 +255,12 @@ export default function Home() {
               </motion.button>
               
             </form>
+            
+            {/* 300x250 Medium Rectangle Ad */}
+            <div className="mt-8 flex justify-center w-full overflow-hidden rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">
+              <AdBanner dataKey="487afd950c6b1c33f42978d454b5eb11" width={300} height={250} className="py-2" />
+            </div>
+
           </div>
         </motion.div>
       </div>

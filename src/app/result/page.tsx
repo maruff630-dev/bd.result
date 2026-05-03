@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, Download, CheckCircle, GraduationCap } from 'lucide-react';
 import { toPng } from 'html-to-image';
 import { jsPDF } from 'jspdf';
+import AdBanner from '@/components/AdBanner';
 
 function ResultContent() {
   const searchParams = useSearchParams();
@@ -141,7 +142,7 @@ function ResultContent() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
+    <div className="flex-1 w-full bg-slate-50 dark:bg-slate-950 py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -264,6 +265,11 @@ function ResultContent() {
               </div>
             </div>
             
+            {/* 300x250 Medium Rectangle Ad */}
+            <div className="mt-8 flex justify-center w-full overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700/50 bg-slate-50 dark:bg-slate-800/30">
+              <AdBanner dataKey="487afd950c6b1c33f42978d454b5eb11" width={300} height={250} className="py-2" />
+            </div>
+
           </div>
         </div>
       </motion.div>

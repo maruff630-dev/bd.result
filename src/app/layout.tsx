@@ -69,6 +69,9 @@ export const metadata: Metadata = {
   },
 };
 
+import AdSocialBar from "@/components/AdSocialBar";
+import AdBanner from "@/components/AdBanner";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -79,14 +82,21 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-slate-50 dark:bg-slate-950 transition-colors duration-300 relative pb-10">
+      <body className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <VisitTracker />
+          <AdSocialBar />
           <ThemeToggle />
-          <main className="flex-1">
+          <main className="flex-1 flex flex-col">
             {children}
           </main>
-          <footer className="absolute bottom-0 w-full text-center py-3 text-slate-400 dark:text-slate-500 text-xs font-medium">
+          
+          {/* 320x50 Mobile Banner (Global) */}
+          <div className="w-full flex justify-center bg-slate-50 dark:bg-slate-950 pt-2 z-10 relative">
+            <AdBanner dataKey="f5d6a62114fa3a7bd35ed356e1c398a0" width={320} height={50} />
+          </div>
+
+          <footer className="w-full text-center py-3 bg-slate-50 dark:bg-slate-950 text-slate-500 dark:text-slate-400 text-xs font-medium transition-colors duration-300 z-10 relative">
             BD Result Platform &copy; {new Date().getFullYear()} • v1.1.1
           </footer>
         </ThemeProvider>
