@@ -44,10 +44,19 @@ const keywords = [
 ];
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://bdresult2026.vercel.app"),
   title: "BD Result - SSC & HSC Marksheet 2026",
+  applicationName: "BD Result",
+  appleWebApp: {
+    title: "BD Result",
+    statusBarStyle: "default",
+  },
   description: "Check your SSC, HSC, and JSC results instantly. BD Result is the fastest and most reliable platform for Bangladesh Education Board Results. Supports 2020 to 2026 results.",
   keywords: keywords.join(", "),
   authors: [{ name: "BD Result" }],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "BD Result - Fast Academic Result Checker",
     description: "Instant SSC and HSC result checker for all Bangladesh education boards.",
@@ -83,7 +92,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <VisitTracker />
           <AdSocialBar />
           <ThemeToggle />
