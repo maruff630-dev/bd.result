@@ -64,9 +64,15 @@ export async function fetchResultFromBoard(exam: string, year: string, board: st
     const $res = cheerio.load(postRes.data);
     const bodyText = $res('body').text();
 
-    // Check for standard errors
-    if (bodyText.includes('err=105') || postRes.data.includes('err=105') || postRes.data.includes('location.href="index.php"')) {
-      return { error: 'Official result not found. Please check your credentials.', subjects: [] };
+    // Check for standard errors from the board
+    if (postRes.data.includes('err=')) {
+      if (postRes.data.includes('err=105')) {
+        return { error: 'Official result not found. Please check your Roll and Registration number.', subjects: [] };
+      }
+      if (postRes.data.includes('err=103') || postRes.data.includes('err=104')) {
+        return { error: 'Result for this year or examination is not published yet.', subjects: [] };
+      }
+      return { error: 'Official Board Server Error. Please check your information and try again.', subjects: [] };
     }
     
     if (bodyText.includes('Not Found') || bodyText.includes('Invalid')) {
