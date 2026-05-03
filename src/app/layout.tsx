@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "BD Result - Fast Academic Result Checker",
     description: "Instant SSC and HSC result checker for all Bangladesh education boards.",
-    url: "https://bd.result.vercel.app",
+    url: "https://bdresult2026.vercel.app",
     siteName: "BD Result",
     images: [
       {

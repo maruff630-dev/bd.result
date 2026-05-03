@@ -1,11 +1,11 @@
-📘 PRD — Bangladesh Result System (bd.result.vercel.app)
+📘 PRD — Bangladesh Result System (bdresult2026.vercel.app)
 🧩 Project Name
 
 BD Result - Fast Academic Result Checker
 
 🌐 Live Domain (target)
 
-👉 https://bd.result.vercel.app
+👉 https://bdresult2026.vercel.app
  (Vercel deployment)
 
 💻 GitHub Repo
