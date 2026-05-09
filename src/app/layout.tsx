@@ -44,6 +44,7 @@ const keywords = [
 ];
 
 export const metadata: Metadata = {
+  manifest: "/manifest.json",
   metadataBase: new URL("https://bdresult2026.vercel.app"),
   title: "BD Result - SSC & HSC Marksheet 2026",
   applicationName: "BD Result",
@@ -78,7 +79,6 @@ export const metadata: Metadata = {
   },
 };
 
-import AdSocialBar from "@/components/AdSocialBar";
 import AdBanner from "@/components/AdBanner";
 
 export default function RootLayout({
@@ -94,7 +94,6 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <VisitTracker />
-          <AdSocialBar />
           <ThemeToggle />
           <main className="flex-1 flex flex-col">
             {children}
@@ -106,7 +105,7 @@ export default function RootLayout({
           </div>
 
           <footer className="w-full text-center py-3 bg-slate-50 dark:bg-slate-950 text-slate-500 dark:text-slate-400 text-xs font-medium transition-colors duration-300 z-10 relative">
-            BD Result Platform &copy; {new Date().getFullYear()} • v1.1.1
+            BD Result Platform &copy; {new Date().getFullYear()} • v1.2.0
           </footer>
         </ThemeProvider>
       </body>

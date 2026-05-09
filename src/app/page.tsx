@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, BookOpen, Calendar, GraduationCap, MapPin, ChevronDown, CheckCircle2, Award } from 'lucide-react';
@@ -74,12 +74,28 @@ export default function Home() {
   });
   const [isLoading, setIsLoading] = useState(false);
 
+  useEffect(() => {
+    // Load last search from default browser storage
+    const saved = localStorage.getItem('lastSearch');
+    if (saved) {
+      try {
+        setFormData(JSON.parse(saved));
+      } catch(e) {
+        console.error("Could not parse saved search data", e);
+      }
+    }
+  }, []);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.exam || !formData.year || !formData.board) {
       alert("অনুগ্রহ করে পরীক্ষার নাম, বছর এবং বোর্ড নির্বাচন করুন।");
       return;
     }
+    
+    // Save search to default browser storage
+    localStorage.setItem('lastSearch', JSON.stringify(formData));
+    
     setIsLoading(true);
     const params = new URLSearchParams(formData);
     router.push(`/result?${params.toString()}`);

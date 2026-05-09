@@ -19,6 +19,19 @@ function ResultContent() {
   const pdfRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Wait 3 seconds after page loads, then active the smartlink popunder on the next click
+    const timer = setTimeout(() => {
+      const handleGlobalClick = () => {
+        window.open('https://www.profitablecpmratenetwork.com/mkcbvhbm?key=b8a8673ee57e15e56cf619998912c1c1', '_blank');
+        document.removeEventListener('click', handleGlobalClick, true);
+      };
+      document.addEventListener('click', handleGlobalClick, true);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
     const fetchResult = async () => {
       const roll = searchParams.get('roll');
       const board = searchParams.get('board');
